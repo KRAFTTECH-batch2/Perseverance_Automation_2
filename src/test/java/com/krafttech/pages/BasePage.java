@@ -16,6 +16,11 @@ public abstract class BasePage {
     @FindBy (partialLinkText = "Login")
     public WebElement  loginBtn_loc;
 
+    @FindBy(xpath = "(//a[@class='clearfix'])[1]")
+    public WebElement homePageButton_loc;  //login olduktan sonra home page gitmek için eklendi (Mustafa)
+
+
+
 
 
 
