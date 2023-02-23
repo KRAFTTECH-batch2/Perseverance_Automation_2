@@ -10,5 +10,8 @@ Feature: Scroll Down
       When The user click on your story to go to the home page
       Then The user scrolls down and sees trending items
 
-
-
+  @wipMy
+  Scenario:Hover any product and see four options and add to card any product_2
+    When The user hovers mause over any product and see four options and click add to card icon
+    And  The page will automatically scroll all the way up, a success message will appear
+    Then Then the user click on the add to card icon and the product appears in the basket in the upper right corner
