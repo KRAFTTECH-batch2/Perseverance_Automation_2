@@ -56,4 +56,20 @@ public class AddToCard_StepDefs {
     }
 
 
+    // Scenario_3
+    @When("The user click the card icon in the middle right middle and sees products added")
+    public void the_user_click_the_card_icon_in_the_middle_right_middle_and_sees_products_added() {
+        loginPage.homePageButton_loc.click();
+        if (loginPage.firstPopUpCloseBtn_loc.isDisplayed()){
+            loginPage.firstPopUpCloseBtn_loc.click();
+        }
+        homePage.cardIconAndAddedProduct();
+
+    }
+    @Then("The user adds all the product stock on the screen to the basket, and then he refers to the page and sees that the new product is not allowed to be added")
+    public void the_user_adds_all_the_product_stock_on_the_screen_to_the_basket_and_then_he_refers_to_the_page_and_sees_that_the_new_product_is_not_allowed_to_be_added() {
+        homePage.stockControl();
+    }
+
+
 }
