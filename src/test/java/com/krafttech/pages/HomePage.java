@@ -7,7 +7,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-public class HomePage extends BasePage{
+public class HomePage extends BasePage {
 
     @FindBy(xpath = "//span[normalize-space()='Trending items']")
     public WebElement trendingItems_loc;
@@ -79,9 +79,17 @@ public class HomePage extends BasePage{
     @FindBy(xpath = "(//tr)[5]//td[4]//span//button[@type='submit']")
     public WebElement updateButton_loc;
 
+    @FindBy(xpath = "//p[contains(text(),'My cart')]")
+    public WebElement myCart_loc;
+
+    @FindBy(linkText = "Checkout")
+    public WebElement checkOutBtn_loc;
+
+    @FindBy(xpath = "//button[@class='popup-close']")
+    public WebElement popClsBtn_loc;
 
 
-    public void hoverAndAssert(){
+    public void hoverAndAssert() {
         BrowserUtils.scrollToElement(trendingItems_loc);
         BrowserUtils.hover(NoerdenMinimiSmartBody_loc);
         BrowserUtils.hover(shoppingOptions_loc);
@@ -97,13 +105,13 @@ public class HomePage extends BasePage{
         Assert.assertTrue(quickOptions_loc.isDisplayed());
     }
 
-    public void assertSuccessMessage(){
+    public void assertSuccessMessage() {
         shoppingOptions_loc.click();
-        BrowserUtils.waitForVisibility(homePageButton_loc,2);
+        BrowserUtils.waitForVisibility(homePageButton_loc, 2);
         Assert.assertTrue(successlyMessage_loc.isDisplayed());
     }
 
-    public void cardIconAndAddedProduct(){
+    public void cardIconAndAddedProduct() {
         BrowserUtils.scrollToElement(trendingItems_loc);
         BrowserUtils.hover(NoerdenMinimiSmartBody_loc);
         shoppingOptions_loc.click();
@@ -113,14 +121,14 @@ public class HomePage extends BasePage{
         BrowserUtils.hover(revlon_loc);
         revlonAddToCard_loc.click();
 
-        BrowserUtils.waitForVisibility(homePageButton_loc,2);
+        BrowserUtils.waitForVisibility(homePageButton_loc, 2);
         middleAddToCardIcon_loc.click();
         Assert.assertTrue(noerdenMinimiInCard_loc.isDisplayed());
         Assert.assertTrue(revlonInCard_loc.isDisplayed());
         closeMyCard_loc.click();
     }
 
-    public void stockControl(){
+    public void stockControl() {
         BrowserUtils.waitFor(1);
         successExit_loc.click();
         BrowserUtils.scrollToElement(trendingItems_loc);
@@ -137,6 +145,19 @@ public class HomePage extends BasePage{
         quantityInCard_loc.sendKeys("22260");
         updateButton_loc.click();
         Assert.assertTrue(notStockAlert_loc.isDisplayed());
+    }
+
+    public void addToCart(String productName) {
+        WebElement element = Driver.get().findElement(By.linkText(productName));
+        //  popClsBtn_loc.click();
+        BrowserUtils.scrollToElement(element);
+        element.click();
+        Driver.get().findElement(By.id("button-cart")).click();
+    }
+
+    public void navigateToCheckOut() {
+        BrowserUtils.waitForClickablility(checkOutBtn_loc, 10);
+        checkOutBtn_loc.click();
     }
 
 }
