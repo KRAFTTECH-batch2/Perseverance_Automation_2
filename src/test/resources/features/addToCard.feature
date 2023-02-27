@@ -16,7 +16,7 @@ Feature: Scroll Down
     And  The page will automatically scroll all the way up, a success message will appear
     Then Then the user click on the add to card icon and the product appears in the basket in the upper right corner
 
-  @wipMy
+
   Scenario:Click on card and s/he see produc that was added_3
     When The user click the card icon in the middle right middle and sees products added
     Then The user adds all the product stock on the screen to the basket, and then he refers to the page and sees that the new product is not allowed to be added

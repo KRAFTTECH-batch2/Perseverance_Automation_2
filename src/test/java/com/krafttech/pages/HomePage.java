@@ -93,14 +93,15 @@ public class HomePage extends BasePage {
         BrowserUtils.scrollToElement(trendingItems_loc);
         BrowserUtils.hover(NoerdenMinimiSmartBody_loc);
         BrowserUtils.hover(shoppingOptions_loc);
+        BrowserUtils.waitFor(3);
         Assert.assertTrue(shoppingOptions_loc.isDisplayed());
-        BrowserUtils.waitFor(2);
+        BrowserUtils.waitFor(3);
         BrowserUtils.hover(heartOptions_loc);
         Assert.assertTrue(heartOptions_loc.isDisplayed());
-        BrowserUtils.waitFor(2);
+        BrowserUtils.waitFor(3);
         BrowserUtils.hover(compareOptions_loc);
         Assert.assertTrue(compareOptions_loc.isDisplayed());
-        BrowserUtils.waitFor(2);
+        BrowserUtils.waitFor(3);
         BrowserUtils.hover(quickOptions_loc);
         Assert.assertTrue(quickOptions_loc.isDisplayed());
     }
@@ -133,6 +134,7 @@ public class HomePage extends BasePage {
         successExit_loc.click();
         BrowserUtils.scrollToElement(trendingItems_loc);
         BrowserUtils.hover(noerdenMinimiInCard_loc);
+        BrowserUtils.waitForVisibility(quickOptions_loc,3);
         quickOptions_loc.click();
         WebElement iframe = Driver.get().findElement(By.tagName("iframe"));
         Driver.get().switchTo().frame(iframe);
